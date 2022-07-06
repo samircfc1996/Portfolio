@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,14 +17,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ Route::get('/',function(){
+    return view('welcome') ;
+ });
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
+    Route::get('/',[HomeController::class,'index'])->name('a_home');
+    Route::resource('services',ServiceController::class);
+    Route::resource('posts',PostController::class);
+    Route::resource('categories',CategoryController::class);
+
+
 });
 
-Route::get('index', function () {
-    return view('index');
-});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 
