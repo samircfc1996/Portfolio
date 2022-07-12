@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PortfolioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::resource('services',ServiceController::class);
     Route::resource('posts',PostController::class);
     Route::resource('categories',CategoryController::class);
+    Route::resource('portfolios',PortfolioController::class);
 
 
 });
