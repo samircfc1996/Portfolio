@@ -29,7 +29,7 @@
                                 @csrf
                                 <div class ="mb-3">
                                     <label for="category" class="form-label">Category</label>
-                                    <select name="category_id" id="category">
+                                    <select name="category_id" id="category" multiple>
                                         <option value="">-</option>
                                         @foreach($categories as $category)
                                             <option @if($portfolio->category_id===$category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
@@ -41,11 +41,21 @@
                                     <input type="text" value="{{ $portfolio->name }}" name="name" class="form-control" id="name">
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="image" class="form-label">Photo</label>
+                                    <label for="image" class="form-label">Cover Photo</label>
                                     <img width="100" src="{{ asset('storage/portfolios/'.$portfolio->photo) }}" alt="">
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="image" class="form-label">New Photo</label>
+                                    <label for="image" class="form-label">New Cover Photo</label>
+                                    <input type="file" name="photo" class="form-control" id="image">
+                                </div>
+                                <div class ="mb-3">
+                                    <label for="image" class="form-label">Photo</label>
+                                   @foreach($portfolio->photos as $photo)
+                                        <img width="100" src="{{ asset('storage/portfolio_photos/'.$photo->name) }}" alt="">
+                                    @endforeach
+                                </div>
+                                <div class ="mb-3">
+                                    <label for="image" class="form-label">New Photos</label>
                                     <input type="file" name="photo" class="form-control" id="image">
                                 </div>
                                 <button type="submit" class="btn btn-outline-warning">Update</button>

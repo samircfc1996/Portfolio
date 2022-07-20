@@ -27,8 +27,8 @@ class PortfolioRequest extends FormRequest
             'name'=>'required|string',
             'photo'=>'nullable|file|mimes:jpg,jpeg,png,webp',
             'category_id'=>'required|integer|exists:categories,id',
-            'tag_id'=>'array',
-            'tag_id.*'=>'integer'
+            'photos'=>'nullable|array',
+            'photos.*'=>'file|mimes:jpg,jpeg,png,webp'
 
         ];
     }

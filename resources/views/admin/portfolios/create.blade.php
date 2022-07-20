@@ -36,21 +36,17 @@
                                     </select>
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="tags" class="form-label">Tag</label>
-                                    <select name="tag_id[]" id="tags" multiple>
-                                        <option value="">-</option>
-                                        @foreach($tags as $tag)
-                                            <option   value="{{$tag->id}}">{{$tag->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class ="mb-3">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="name">
                                 </div>
                                 <div class ="mb-3">
+                                    <label for="photo" class="form-label">Cover Photo</label>
+                                    <input type="file" name="photo"  class="form-control" id="photo">
+                                </div>
+
+                                <div class ="mb-3">
                                     <label for="photo" class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control" id="photo">
+                                    <input type="file"  multiple name="photos[]" class="form-control" id="photo">
                                 </div>
 
                                 <button type="submit" class="btn btn-outline-success">Add</button>

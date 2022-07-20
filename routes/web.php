@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PortfolioPhotocontroller;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
@@ -29,6 +30,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::resource('posts',PostController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('portfolios',PortfolioController::class);
+    Route::resource('portfolios.photos',PortfolioPhotoController::class);
+
+
 
 
 });

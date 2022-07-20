@@ -10,11 +10,10 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <form  action="{{route('logout')}}"method="post">
-                @csrf
-            <button type="submit" style="height:35px ;" class="nav-link"><h6>Logout</h6></button>
-            </form>
+            <a href="{{route('logout')}}" onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit()" class="nav-link">Çıxış</a>
         </li>
+        <form action="{{route('logout')}} " id="logout-form" method="post">@csrf</form>
     </ul>
 
     <!-- Right navbar links -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Requests\PortfolioRequest;
+use App\Models\Photo;
 use App\Models\Portfolio;
 use App\Models\Category;
 use App\Models\Tag;
@@ -20,7 +21,7 @@ class PortfolioController extends Controller
     public function index()
     {
 
-        return view('admin.portfolios.index')->with('portfolios',Portfolio::with('category','tags')->get());
+        return view('admin.portfolios.index')->with('portfolios',Portfolio::with('category','photos')->get());
     }
 
     /**
@@ -48,11 +49,15 @@ class PortfolioController extends Controller
 
         $validated['slug']=Str::slug($validated['name']);
         $validated['photo']=$this->initUpload($request->file('photo'), 'portfolios');
-
         $portfolio=Portfolio::create($validated);
 
-        foreach($validated['tag_id'] as $tag){
-            $portfolio->tags()->attach($tag);
+        foreach($request->file('photos') as $photo){
+            $portfolio_photo=$this->initUpload($photo,'portfolio_photos');
+            $photo_model=Photo::create([
+                'name'=>$portfolio_photo
+
+            ]);
+            $portfolio->photos()->attach($photo_model->id);
         }
 
 
@@ -83,7 +88,7 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        $portfolio=Portfolio::findOrFail($id);
+        $portfolio=Portfolio::with('photos')->findOrFail($id);
 
         return view('admin.portfolios.edit')->with([
             'portfolio'=>$portfolio,
