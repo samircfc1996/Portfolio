@@ -37,9 +37,14 @@
                                         <td>{{$portfolio->name}}</td>
                                         <td>{{$portfolio->category->name}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default-{{$portfolio->id}}">
-                                                <i class="fas fa-photo-video"></i>Photo
-                                            </button>
+{{--                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default-{{$portfolio->id}}">--}}
+{{--                                                <i class="fas fa-photo-video"></i>Photo--}}
+{{--                                            </button>--}}
+
+                                            <a href="{{route('portfolios.photos.index', $portfolio->id)}} " class="mr-2" style="color:blue">
+                                                <i class="fas fa-photo-video"></i>Photos page
+                                            </a>
+
                                             <a href="{{route('portfolios.edit', $portfolio->id)}} " class="mr-2" style="color:blue">
                                                 <i class="fas fa-edit"></i>Edit
                                             </a>

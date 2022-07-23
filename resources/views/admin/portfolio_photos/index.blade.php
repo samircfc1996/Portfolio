@@ -17,37 +17,47 @@
                                     {{session('success')}}
                                 </div>
                             @endif
+
+                            <div class="float-right mb-3">
+                                <a href="{{route('portfolios.photos.create',$portfolio_id)}}" class="btn btn-primary">Add New Photos</a>
+                            </div>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Category</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img  width="120" src="{{asset('storage/portfolios/') }}" alt="">
-                                        </td>
-                                        <td>test</td>
-                                        <td>test</td>
+                                    @foreach($portfolio_photos as $photo)
+                                        <tr>
+                                            <td>{{$photo->id}}</td>
+                                            <td>
+                                                <img  width="120" src="{{asset('storage/portfolio_photos/'.$photo->name) }}" alt="">
+                                            </td>
+                                            <td>{{$photo->name}}</td>
+                                            <td>
 
-                                        <td>
+                                                <a href="{{route('portfolios.photos.edit',[
+                                                                 'portfolio'=>$portfolio_id,
+                                                                  'photo'=>$photo->id]
+                                                                  )}}"
+                                                   class="mr-2" style="color:blue">
+                                                    <i class="fas fa-edit"></i>Edit
+                                                </a>
 
-                                            <a  class="mr-2" style="color:blue">
-                                                <i class="fas fa-edit"></i>Edit
-                                            </a>
-                                            <form action="" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-danger" type="submit"> <i class="fas fa-trash"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                                <form action="{{route('portfolios.photos.destroy',[
+                                                                      'portfolio'=>$portfolio_id,
+                                                                       'photo'=>$photo->id])}}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger" type="submit"> <i class="fas fa-trash"></i> Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -53,11 +53,12 @@ class PortfolioController extends Controller
 
         foreach($request->file('photos') as $photo){
             $portfolio_photo=$this->initUpload($photo,'portfolio_photos');
-            $photo_model=Photo::create([
-                'name'=>$portfolio_photo
+            Photo::create([
+                'name'=>$portfolio_photo,
+                'portfolio_id'=>$portfolio->id
 
             ]);
-            $portfolio->photos()->attach($photo_model->id);
+//            $portfolio->photos()->attach($photo_model->id);
         }
 
 
