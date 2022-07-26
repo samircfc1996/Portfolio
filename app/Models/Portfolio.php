@@ -27,7 +27,11 @@ class Portfolio extends Model
 //        return $this->belongsToMany(Tag::class);
 //    }
 
+//    public function photos(){
+//        return $this->belongsToMany(Photo::class);
+//    }
+
     public function photos(){
-        return $this->belongsToMany(Photo::class);
+       return $this->hasMany(Photo::class,'portfolio_id','id');
     }
 }
