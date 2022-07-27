@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Post</h3>
+                            <h3 class="card-title">Edit About</h3>
                         </div>
                         @if (count($errors) > 0)
                             @foreach ($errors->all() as $error)
@@ -22,27 +22,27 @@
                             @endforeach
                         @endif
                         <div class="card-body">
-                            <form action="{{route('posts.update', $post->id)}}"
-                                  method="post"
-                                  enctype="multipart/form-data">
+                            <form action="{{route('abouts.update', $about->id)}}"
+                                  method="post">
                                 @method('put')
                                 @csrf
                                 <div class ="mb-3">
-                                    <label for="name" class="form-label">Post Name</label>
-                                    <input type="text" value="{{ $post->name }}" name="name" class="form-control" id="name">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" value="{{ $about->title }}" name="title" class="form-control" id="title">
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="desc" class="form-label">Description</label>
-                                    <input type="text" value="{{ $post->desc }}" name="desc" class="form-control" id="desc">
+                                    <label for="desription" class="form-label">Description</label>
+                                    <input type="text" value="{{ $about->description }}" name="description" class="form-control" id="description">
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="image" class="form-label">Photo</label>
-                                    <img width="100" src="{{ asset('storage/posts/'.$post->image) }}" alt="">
+                                    <label for="job" class="form-label">Job</label>
+                                    <input type="text" value="{{ $about->job }}" name="job" class="form-control" id="job">
                                 </div>
                                 <div class ="mb-3">
-                                    <label for="image" class="form-label">New Photo</label>
-                                    <input type="file" name="image" class="form-control" id="image">
+                                    <label for="text" class="form-label">Text</label>
+                                    <input type="text" value="{{ $about->text }}" name="text" class="form-control" id="text">
                                 </div>
+
                                 <button type="submit" class="btn btn-outline-primary">Update</button>
                             </form>
                         </div>

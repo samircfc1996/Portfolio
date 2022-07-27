@@ -65,7 +65,7 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -76,7 +76,9 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
+        $about =About::findOrFail($id);
 
+        return view('admin.abouts.edit')->with('about', $about);
     }
 
     /**
@@ -86,9 +88,21 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AboutRequest $request, $id)
     {
-        //
+        $about = About::findOrFail($id);
+        $validated['title'] = $request->title;
+        $validated['description'] = $request->description;
+        $validated['job'] = $request->job;
+        $validated['text'] = $request->text;
+
+
+        $about->update($validated);
+        if(!$about){
+            return redirect()->back()->with('error','About not update successful');
+        }
+
+        return redirect(route('abouts.index'))->with('success','About  update successful');
     }
 
     /**
@@ -99,6 +113,9 @@ class AboutController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $about = About::findOrFail($id);
+        $about->delete();
+
+        return redirect(route('abouts.index'))->with('success','About deleted successfully');
     }
 }

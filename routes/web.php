@@ -35,13 +35,13 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
 
-
 });
 
 Auth::routes();
 
 Route::get('/',[\App\Http\Controllers\Front\HomeController::class,'index'])->name('f_home');
 Route::get('/work',[\App\Http\Controllers\Front\WorkController::class,'index'])->name('f_work');
+Route::get('/about',[\App\Http\Controllers\Front\AboutController::class,'index'])->name('f_about');
 Route::get('/work/{slug}',[\App\Http\Controllers\Front\WorkController::class,'about'])->name('f_work_about');
 
 

@@ -100,7 +100,7 @@ class PostController extends Controller
         $post->update($validated);
 
         if(!$post){
-            return redirect()->back()->with('error','Post not add successful');
+            return redirect()->back()->with('error','Post not update successful');
         }
 
         return redirect(route('posts.index'))->with('success','Post updated successfully');
