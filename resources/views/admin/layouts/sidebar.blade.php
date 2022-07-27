@@ -13,7 +13,7 @@
           <img src="{{ asset('vendors/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Samir Mammadov</a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -44,6 +44,31 @@
               </li>
             </ul>
           </li>
+
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link ">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        About
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('abouts.index')}}" class="nav-link  @if(Route::is('abouts.index')) active @endif">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('abouts.create')}}" class="nav-link  @if(Route::is('abouts.create')) active @endif ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
           <li class="nav-item menu-open">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>

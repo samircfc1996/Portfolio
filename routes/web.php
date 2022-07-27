@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PortfolioPhotoController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/',[HomeController::class,'index'])->name('a_home');
     Route::resource('services',ServiceController::class);
+    Route::resource('abouts',AboutController::class);
     Route::resource('posts',PostController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('portfolios',PortfolioController::class);

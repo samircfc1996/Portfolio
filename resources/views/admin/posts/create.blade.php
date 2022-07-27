@@ -42,12 +42,8 @@
                           </form>
                         </div>
                     </div>
-                    <!-- /.card -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
+        </div>>
     </section>
 @endsection
